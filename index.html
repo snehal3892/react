@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React with CDN</title>
+    
+    <!-- React CDN -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    
+    <!-- Babel Standalone for JSX transformation -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .counter {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        button {
+            background-color: #61dafb;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        button:hover {
+            background-color: #21a1c4;
+        }
+        
+        .count {
+            font-size: 24px;
+            margin: 20px 0;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // Simple Counter Component
+        function Counter() {
+            const [count, setCount] = React.useState(0);
+
+            return (
+                <div className="container">
+                    <h1>React with CDN Example</h1>
+                    <div className="counter">
+                        <h2>Counter App</h2>
+                        <div className="count">Count: {count}</div>
+                        <button onClick={() => setCount(count - 1)}>-</button>
+                        <button onClick={() => setCount(0)}>Reset</button>
+                        <button onClick={() => setCount(count + 1)}>+</button>
+                    </div>
+                    <p>This React app is running using CDN imports!</p>
+                </div>
+            );
+        }
+
+        // Render the app
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<Counter />);
+    </script>
+</body>
+</html> 
